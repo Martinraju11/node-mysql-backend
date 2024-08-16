@@ -5,6 +5,7 @@ const bodyParser=require("body-parser")
 const cookieParser=require("cookie-parser")
 require("dotenv").config()
 const userRoutes=require("./routes/user-routes");
+const taskRoutes=require("./routes/task-routes")
 const HttpError = require("./config/HttpError");
 
 app.use(bodyParser.urlencoded({extended:false}))
@@ -20,6 +21,8 @@ app.use((req,res,next)=>{
 
 
 app.use("/api/user",userRoutes)
+
+app.use("/api/task",taskRoutes)
 
 app.use((req,res,next)=>{
     const error=new HttpError("Incorrect URL",404)
